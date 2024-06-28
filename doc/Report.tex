@@ -1,6 +1,9 @@
 \documentclass{article}
 \usepackage{geometry}
 \usepackage{textcomp}
+\usepackage{enumitem}
+
+% chktex-file 44
 
 \geometry{a4paper, margin=1in}
 
@@ -13,7 +16,7 @@
 
 \begin{document}
 
-\setcounter{section}{-1}
+\setcounter{section}{0}
 
 \title{Telco Customer Churn}
 \author{REZA AHMADI (VR510067)}
@@ -25,5 +28,79 @@
 
 \tableofcontents
 
+\newpage
 
+\section{Introduction}
+Telco Systems, a global telecom leader with 40+ years of experience in the design and development of high-performance network communications solutions.
+They have released a dataset with various attributes about some of their users, and it contains an important field that is Churn.\\
+We have worked with this dataset in this project in order to apply some machine learning approach and discover more information from this data set.
+
+\section{About Dataset}
+\subsection{Dataset information}
+\begin{itemize}
+  \item Customers who left within the last month, the column is called Churn
+  \item Services that each customer has signed up for phone, multiple lines, internet, online security, online backup, device protection, tech support, and streaming TV and movies
+  \item Customer account information, how long they've been a customer, contract, payment method, paperless billing, monthly charges, and total charges
+  \item Demographic info about customers gender, age range, and if they have partners and dependents
+\end{itemize}
+
+\subsection{Explore dataset}
+The raw data contains 7043 rows (customers) and 21 columns (features).
+List of columns that are already avaialbe in the dataset:
+% \begin{itemize}
+%   \item customerID
+%   \item gender
+%   \item SeniorCitizen: Whether the customer is a senior citizen or not (1, 0)
+%   \item Partner: Whether the customer has a partner or not (Yes, No)
+%   \item Dependents: Whether the customer has dependents or not (Yes, No)
+%   \item Tenure: Number of months the customer has stayed with the company
+%   \item PhoneService: Whether the customer has a phone service or not (Yes, No)
+%   \item MultipleLines: Whether the customer has multiple lines or not (Yes, No, No phone service)
+%   \item InternetService: Customer's internet service provider (DSL, Fiber optic, No)
+%   \item OnlineSecurity: Whether the customer has online security or not (Yes, No, No internet service)
+%   \item OnlineBackup: Whether the customer has online backup or not (Yes, No, No internet service)
+%   \item DeviceProtection: Whether the customer has device protection or not (Yes, No, No internet service)
+%   \item TechSupport: Whether the customer has tech support or not (Yes, No, No internet service)
+%   \item StreamingTV\@: Whether the customer has streaming TV or not (Yes, No, No internet service)
+%   \item StreamingMovies: Whether the customer has streaming movies or not (Yes, No, No internet service)
+%   \item Contract: The contract term of the customer (Month-to-month, One year, Two year)
+%   \item PaperlessBilling: Whether the customer has paperless billing or not (Yes, No)
+%   \item PaymentMethod: The customer's payment method (Electronic check, Mailed check, Bank transfer (automatic), Credit card)
+%   \item MonthlyCharges: The amount charged to the customer monthly
+%   \item TotalCharges: The total amount charged to the customer
+%   \item Churn: Whether the customer churned or not (Yes or No)
+% \end{itemize}
+
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{|l|l|l|}
+  \hline
+\textbf{Field} & \textbf{Values} & \textbf{Description} \\
+\hline
+customerID & String & Unique identifier \\
+gender & Male, Female & Gender \\
+SeniorCitizen & 1, 0 & Senior citizen status \\
+Partner & Yes, No & Has a partner \\
+Dependents & Yes, No & Has dependents \\
+Tenure & Numeric & Months with company \\
+PhoneService & Yes, No & Has phone service \\
+MultipleLines & Yes, No, No phone & Has multiple lines \\
+InternetService & DSL, Fiber optic, No & Internet service provider \\
+OnlineSecurity & Yes, No, No internet & Has online security \\
+OnlineBackup & Yes, No, No internet & Has online backup \\
+DeviceProtection & Yes, No, No internet & Has device protection \\
+TechSupport & Yes, No, No internet & Has tech support \\
+StreamingTV & Yes, No, No internet & Has streaming TV \\
+StreamingMovies & Yes, No, No internet & Has streaming movies \\
+Contract & Month-to-month, One year, Two year & Contract term \\
+PaperlessBilling & Yes, No & Paperless billing \\
+PaymentMethod & Electronic, Mailed, Bank transfer, Credit card & Payment method \\
+MonthlyCharges & Numeric & Monthly charges \\
+TotalCharges & Numeric & Total charges \\
+Churn & Yes, No & Churn status \\
+\hline
+\end{tabular}
+\caption{Description of Fields}
+\end{table}
 \end{document}
