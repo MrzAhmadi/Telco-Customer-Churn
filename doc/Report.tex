@@ -5,34 +5,7 @@
 \usepackage{amsmath} 
 \usepackage{graphicx}
 % \usepackage{showframe}
-
-
 % chktex-file 44
-
-
-\usepackage{listings}
-\usepackage{color}
-
-\definecolor{dkgreen}{rgb}{0,0.6,0}
-\definecolor{gray}{rgb}{0.5,0.5,0.5}
-\definecolor{mauve}{rgb}{0.58,0,0.82}
-
-\lstset{frame=tb,
-  language=python,
-  aboveskip=3mm,
-  belowskip=3mm,
-  showstringspaces=false,
-  columns=flexible,
-  basicstyle={\small\ttfamily},
-  numbers=none,
-  numberstyle=\tiny\color{gray},
-  keywordstyle=\color{blue},
-  commentstyle=\color{dkgreen},
-  stringstyle=\color{mauve},
-  breaklines=true,
-  breakatwhitespace=true,
-  tabsize=3
-}
 
 \geometry{
   left=1in,
@@ -43,11 +16,15 @@
 
 \begin{document}
 
-\setcounter{section}{-1}
+\setcounter{section}{0}
 
-\title{Machine learning approaches for \\ Telco Customer Churn}
-\author{UNIVERSITY OF VERONA \\ Reza Ahmadi (VR510067)}
-\date{June, 2024}
+\title{Machine learning approaches for \\ Customer Churn Prediction}
+\author{
+  UNIVERSITY OF VERONA\\
+  Master's degree of Computer Engineering\\
+  Reza Ahmadi (VR510067)
+ }
+\date{2023/2024 Academic year}
 \maketitle
 \vspace{1cm}
 
@@ -66,65 +43,56 @@
 
 \newpage
 
-\section{Preface}
-
-I am delighted to present this report detailing the exploration and application of machine learning techniques to analyze Telco customer churn data. This project represents a significant endeavor, aiming to uncover insights that can inform business strategies and enhance customer retention efforts.\\
-I would like to express my sincere gratitude to Professors Vittorio Murino, Cigdem Beyan, and Andrea Avogaro for their invaluable guidance and support throughout this course and project. Their expertise and encouragement have been instrumental in shaping my understanding of machine learning concepts and methodologies.
-\newpage
-
 \tableofcontents
 
 \newpage
 
 
-\section{Introduction}
-Telco Systems, a global telecom leader with 40+ years of experience in the design and development of high-performance network communications solutions.
-They have released a dataset with various attributes about some of their users, and it contains an important field that is Churn.\\
-We have worked with this dataset in this project in order to apply some machine learning approach and discover more information from this data set.
+\section{Motivation and Rationale}
+It is obvious that the most important entity in a company or in a business is the customer. There are several aspects for managing a business, but nowadays, digital marketing is known as one of the best parts of a company.
+They are focused on attracting customers to the product and services, but after this step we are dealing with another factor that is Churn Rate.
+In fact there are several rival companies, and they are trying to offer better products or services in digital marketing and ads and that is why controlling the Churn Rate is really important.
+It is possible that sometimes other factors have affected Churning users but in any situation If we are able to identify users that want to leave our services and predict it, we can break the churn by other techniques in digital marketing and remain users, so to speak we were able to break the churn. 
+That is why this kind of research is really important for many companies.
 
-\section{About Dataset}
-Data set is already avaialbe on the kaggle.
+\section{State of the Art}
 
-\subsection{Download dataset}
-In order to download dataset, we should surfe this link:\\
-https://www.kaggle.com/datasets/blastchar/telco-customer-churn/data
+\subsection{Predicting Customer Churn}
+Churn prediction means detecting which customers are likely to leave a service or to cancel a subscription to a service. It is a critical prediction for many businesses because acquiring new clients often costs more than retaining existing ones. Once you can identify those customers that are at risk of canceling, you should know exactly what marketing action to take for each individual customer to maximize the chances that the customer will remain.\\
+Different customers exhibit different behaviors and preferences, so they cancel their subscriptions for various reasons. It is critical, therefore, to proactively communicate with each of them in order to retain them in your customer list. You need to know which marketing action will be the most effective for each and every customer, and when it will be most effective.
 
-\subsection{Dataset information}
+\subsection{Why is it so important?}
+Customer churn is a common problem across businesses in many sectors. If you want to grow as a company, you have to invest in acquiring new clients. Every time a client leaves, it represents a significant investment lost. Both time and effort need to be channeled into replacing them. Being able to predict when a client is likely to leave, and offer them incentives to stay, can offer huge savings to a business.\\
+As a result, understanding what keeps customers engaged is extremely valuable knowledge, as it can help you to develop your retention strategies, and to roll out operational practices aimed at keeping customers from walking out the door.\\
+Predicting churn is a fact of life for any subscription business, and even slight fluctuations in churn can have a significant impact on your bottom line. We need to know: “Is this customer going to leave us within X months?” Yes or No? It is a binary classification task.
+
+\subsection{What are the main challenges?}
+Churn prediction modelling techniques attempt to understand the precise customer behaviours and attributes that signal the risk and timing of customers leaving. It’s not a walk-in-the-park task so I mention just four points to consider.
 \begin{itemize}
-  \item Customers who left within the last month, the column is called Churn
-  \item Services that each customer has signed up for phone, multiple lines, internet, online security, online backup, device protection, tech support, and streaming TV and movies
-  \item Customer account information, how long they've been a customer, contract, payment method, paperless billing, monthly charges, and total charges
-  \item Demographic info about customers gender, age range, and if they have partners and dependents
+  \item[\textbf{1}] To succeed at retaining customers who are ready to abandon your business, Marketers and Customer Success experts must be able to predict in advance which customers are going to churn and set up a plan of marketing actions that will have the greatest retention impact on each customer. The key here is to be proactive and engage with these customers. While simple in theory, the realities involved with achieving this “proactive retention” goal are extremely challenging.
+  \item[\textbf{2}] The accuracy of the technique is critical to the success of any proactive retention efforts. If the Marketer is unaware of a customer about to churn, no action will be taken to retain that customer.
+  \item[\textbf{3}] Special retention-focused offers or incentives may be provided to happy, active customers, resulting in reduced revenues for no good reason.
+  \item[\textbf{4}] Your churn prediction model should rely on (almost) real-time data to quantify the risk of churning, not on static data. Although you will be able to identify a certain percentage of at-risk customers with even static data, your predictions will be inaccurate. 
 \end{itemize}
+Bringing it all together, predicting customer churn is important. Effective action can be taken to retain the customer before it is too late. The ability to predict that a customer is at high risk of churning while there is still time to do something about it represents a huge additional potential revenue source for every online business.
 
-\newpage
-\subsection{Explore dataset}
-The raw data contains 7043 rows (customers) and 21 columns (features).
-List of columns that are already avaialbe in the dataset:
-% \begin{itemize}
-%   \item customerID
-%   \item gender
-%   \item SeniorCitizen: Whether the customer is a senior citizen or not (1, 0)
-%   \item Partner: Whether the customer has a partner or not (Yes, No)
-%   \item Dependents: Whether the customer has dependents or not (Yes, No)
-%   \item Tenure: Number of months the customer has stayed with the company
-%   \item PhoneService: Whether the customer has a phone service or not (Yes, No)
-%   \item MultipleLines: Whether the customer has multiple lines or not (Yes, No, No phone service)
-%   \item InternetService: Customer's internet service provider (DSL, Fiber optic, No)
-%   \item OnlineSecurity: Whether the customer has online security or not (Yes, No, No internet service)
-%   \item OnlineBackup: Whether the customer has online backup or not (Yes, No, No internet service)
-%   \item DeviceProtection: Whether the customer has device protection or not (Yes, No, No internet service)
-%   \item TechSupport: Whether the customer has tech support or not (Yes, No, No internet service)
-%   \item StreamingTV\@: Whether the customer has streaming TV or not (Yes, No, No internet service)
-%   \item StreamingMovies: Whether the customer has streaming movies or not (Yes, No, No internet service)
-%   \item Contract: The contract term of the customer (Month-to-month, One year, Two year)
-%   \item PaperlessBilling: Whether the customer has paperless billing or not (Yes, No)
-%   \item PaymentMethod: The customer's payment method (Electronic check, Mailed check, Bank transfer (automatic), Credit card)
-%   \item MonthlyCharges: The amount charged to the customer monthly
-%   \item TotalCharges: The total amount charged to the customer
-%   \item Churn: Whether the customer churned or not (Yes or No)
-% \end{itemize}
 
+\section{Objectives}
+In short, we are trying to provide some model of Machine learning approaches to find a way to predict users that want to leave our service. It is clear that we are not able to have a certain answer about churn of a user because it depends on many factors, and we are just trying to find the most accurate approach to recognize users that want to leave service from a company. In detail, it can be said that if we are able to understand why a user leaves our service based on a series of parameters, then we can say that if a user in the future has parameters exactly with the profile of the user checked in the past, this user is probably Currently, they intend to leave the service.
+
+
+
+\section{Methodology}
+In this section, we will talk more about explaining technical issues and implementation details.
+
+\subsection{Dataset}
+One of the most famous and completed dataset that is available for public society is regarding Telco.
+Telco is a company active in the field of telecommunications, and it is also an Internet Service provider.\\
+They have published a dataset about 6 years ago, and it contains the rows (records) of 7043 users in 21 columns (features).The dataset is already available on the Kaggle, and it is accessible with this link:\\
+\vspace{\baselineskip} \newline
+https://www.kaggle.com/datasets/blastchar/telco-customer-churn/data
+\vspace{\baselineskip} \newline
+These years many people have worked on this dataset, and it can be helpful for us to avoid starting from scratch and have a better imagination to implement our approach by a logical and practical implementation.
 
 \begin{table}[ht]
   \centering
@@ -158,178 +126,255 @@ List of columns that are already avaialbe in the dataset:
   \end{tabular}
   \caption{Description of Fields}
   \end{table}
-  
 
-\newpage
-\section{Open Dataset in Enviroment}
-In order to produce a data frame from data, we have used the Pandas library, below code can satisfy our expectation.
-\begin{lstlisting}
-  import pandas as pd
-  df = pd.read_csv("data/WA_Fn-UseC_-Telco-Customer-Churn.csv")
-  print("Shape of datasset",df.shape)
-  df.head()
-  \end{lstlisting}
-  It is clear that two first lines of the code are trying to import libraries and in the third line it is trying to open a CSV dataset and retain it as a data frame in a variable and then we have tried to show the results.
-
-\section{Visualization}
-In this part, we have tried to provide some visualization by charts in order to have better imagination from data.
-
-\subsection{Discrete value fields}
-The most useful type of charts for visualizing discrete values is pie charts. As we have seen in the 2.3 section we have many discrete fields, but we are going to visualize 9 of the most important.\\
-The most important discrete fields seem:
+\subsection{Methods and Algorithms}
+In this project we have used 3 types of classification approaches in machine learning with 5 different implementations. Implementations in respectively are:
 \begin{itemize}
-  \item Gender
-  \item Internet Service
-  \item Contract
-  \item Paperless Billing
-  \item PaymentMethod
-  \item Churn
+  \item Preprocessing
+  \item Split Data
+  \item Principal Component Analysis (PCA)
+  \item Bayes Decision Theory
+  \item K-Nearest Neighbors 
+  \item Support Vector Machine (SVM) with Linear, RBF and Sigmoid kernels
 \end{itemize}
-\vspace{1cm}
-For producing these charts we are using matplot library, so we have written this code:
+In the rest of this section we are going to disucss more about each methods and explain them.
 
+\subsection{Preprocessing}
+The main purpose of this step is just converting discrete values that are non-numerical to numbers and fulfill empty rows and clean data.
 
+\subsection{Split Data}
+It was predictable for us that we have to evaluate our results, and we have had just one dataset so we have tried to split data into two parts, 80 percent for train and 20 percent for test.
 
-\newpage
-\begin{lstlisting}
-  import matplotlib.pyplot as plt
-
-  print("Distribution of Some Interesting Discrete Features")
-  
-  # Define the data for each pie chart
-  gender_counts = df['gender'].value_counts()
-  internet_counts = df['InternetService'].value_counts()
-  contract_counts = df['Contract'].value_counts()
-  paperless_billing_counts = df['PaperlessBilling'].value_counts()
-  payment_method_counts = df['PaymentMethod'].value_counts()
-  churn_counts = df['Churn'].value_counts()
-  
-  # Create a figure with multiple subplots
-  fig, axs = plt.subplots(2, 3, figsize=(15, 10))
-  
-  # Plot each pie chart in its corresponding subplot
-  axs[0, 0].pie(gender_counts, labels=gender_counts.index, autopct='%1.1f%%', startangle=90)
-  axs[0, 0].set_title('Gender')
-  
-  axs[0, 1].pie(internet_counts, labels=internet_counts.index, autopct='%1.1f%%', startangle=90)
-  axs[0, 1].set_title('Internet Service')
-  
-  axs[0, 2].pie(contract_counts, labels=contract_counts.index, autopct='%1.1f%%', startangle=90)
-  axs[0, 2].set_title('Contract')
-  
-  axs[1, 0].pie(paperless_billing_counts, labels=paperless_billing_counts.index, autopct='%1.1f%%', startangle=90)
-  axs[1, 0].set_title('Paperless Billing')
-  
-  axs[1, 1].pie(payment_method_counts, labels=payment_method_counts.index, autopct='%1.1f%%', startangle=90)
-  axs[1, 1].set_title('Payment Method')
-  
-  axs[1, 2].pie(churn_counts, labels=churn_counts.index, autopct='%1.1f%%', startangle=90)
-  axs[1, 2].set_title('Churn Distribution')
-  
-  # Adjust layout
-  plt.tight_layout()
-  
-  # Display the plot
-  plt.show()  
-  \end{lstlisting}
-  \vspace{\baselineskip}
-In the above code, first we have tried to import the Matplot library. Then the features for visualize are separated in each specific variables then we have defined a figure like 2 by 3 and 15 $\times$ 10 dimensions and on the remaining lines the data are passed to each position, and finally we have plotted charts.\\
-The result is like the following figure.
-\newline
-\vspace{1cm}
-\begin{figure}[htbp]
-  \centering
-  \includegraphics[width=\textwidth]{assets/distributatuons.png}
-  \caption{Distributatuons of some discrete fields}
-\end{figure}
-\vspace{\baselineskip}
-\newline
-The most interesting pie chart is Churn Distribution. It is obvious that 26.5 percent of data are about the people that leave getting services from the company, but other users are still remaining.
-
-
-\newpage
-\subsection{Continues value fields}
-One of the most important charts for visualizing continues value is Histograms, with this chart we can see the scattering of data by each specific unit.
-As we have mentioned in the section 2.3 there are several continues value in the dataset, it seems the most important are:
+\subsection{Principal Component Analysis (PCA)}
+As we have discussed in the 3.1 section there are 21 features in the dataset and in order to avoid dimensionality reduction and noise reduction, we applied PCA as a step of feature extraction.
+There is an implementation in the Scikit-learn library, but we had to find the best number of components. For finding the number of components, we implemented some steps exactly like applying PCA on features. These steps are:
 \begin{itemize}
-  \item Tenure
-  \item Monthly Charges
-  \item Total Charges
+  \item \textbf{Standardization:} Having smaller numbers and has a mean of 0 and a standard deviation of 1 for each feature.
+  \item \textbf{Covariance Matrix Computation:} Calculate the covariance matrix to find relationships between variables.
+  \item \textbf{Eigenvalue and Eigenvector Computation:} Find the covariance matrix's eigenvalues and eigenvectors.
+  \item \textbf{Principal Components Selection:} Sort the eigenvalues in descending order, then select the top k eigenvalues.
+  \item \textbf{Data Transformation:} Translates the initial data onto the newly specified feature space that the major components have defined.
 \end{itemize}
-\vspace{1cm}
-For visualize Histogram we are using Matplot library again, so the implementation is like this:
+Finally, we have chosen 3 of the biggest eigenvalues with respectively numbers 1, 1 and 0.99, and we set the number of components equal to 3.
 
-\vspace{1cm}
+\subsection{Bayes Decision Theory}
+For applying Naive Bayes on our data, we have chosen Gaussian Naive Bayes. Gaussian Naive Bayes is a variant of the Naive Bayes algorithm, but it works on values that follow a Gaussian (normal) distribution. As we have seen in the PCA step, we have normalized our data so we can apply Gaussian Naive Bayes.
+Finally, for finding probabilistic data we have applied Naive Bayes on our train data.
 
-\begin{lstlisting}
-  plt.figure(figsize=(8, 5))
-  plt.hist(df['tenure'], bins=20, color='blue', edgecolor='black')
-  plt.xlabel('Tenure')
-  plt.ylabel('Frequency')
-  plt.title('Histogram of Tenure')
-  plt.grid(True)
-  plt.show()
-\end{lstlisting}
-\vspace{\baselineskip}
-In the represented code, a plot is defined with 8 $\times$ 5 dimensions, then tenure features from the dataset have passed and on the rest of the code we have defined just visualization properties.\\
-The result of the code is a histogram chart like this:
-\begin{figure}[htbp]
+\subsection{K-Nearest Neighbors}
+For implementation of K-Nearest Neighbors we were dealing with the k number. In many cases we can ask for a K number from a domain expert but despite many searches there was no reasonable K number so we have decided to find the best K as train and evaluation for each K in a loop. Also we have tried to store standard deviation for each k.\\
+Finally, we have found the best accuracy is with 0.7799858055358411 with k= 6.
+
+\subsection{Support Vector Machine (SVM)}
+In order to implement SVM, we have used Scikit like previous steps. We have tried SVM by 3 kernels that are Linear, Sigmoid and RBF. All 3 chapters are implemented totally the same but for RBF we have had a problem about zero division, and we had to balance the class-weight in parameters.
+
+
+
+\section{Experiments \& Results}
+For producing results and having comparisons between the different approaches and algorithms, we have tried to make some evaluation for each approach. As we have mentioned in section 3.4 we have split our data for train and test and dimensions of them are respectively 80 percent and 20 percent.\\
+Furthermore, we have checked accuracy score and calculated Precision, Recall and F1 scores for remain and churn users separately. In continuation, we are going to compare the results of each approach.
+
+\subsection{Confsion Matrix}
+In a 2 by 2 confusion matrix of our problem there are 4 sections or 4 factors.
+\begin{itemize}
+  \item \textbf{True Positive:} This index shows the number of users who wanted to leave, and we predicted that they would leave.
+  \item \textbf{True Negative:} This index represents the number of users who wanted to leave, and we predicted they would not.
+  \item \textbf{False Positive:} This index shows the number of users who did not want to leave, and we predicted that they would.
+  \item \textbf{False Negative:} This index shows the number of users who did not want to go, and we predicted that they would not go.
+\end{itemize}
+
+\begin{table}[ht]
   \centering
-  \includegraphics[width=0.6\textwidth]{assets/hist_tenure.png}
-  \caption{Histogram of tenure}
-\end{figure}
+\begin{tabular}{|l|l|l|}
+  \hline
+  & \text{Predicted Positive} & \text{Predicted Negative} \\
+  \hline
+  \text{Actual Positive} & TP & FN \\
+  \hline
+  \text{Actual Negative} & FP & TN \\
+  \hline
+\end{tabular}
+\end{table}
+
+\newpage
+As conseences we are going to calculate our scores with this formulas:\\
+\vspace{\baselineskip}
+
+Accuracy:
+\[
+\text{Accuracy} = \frac{TP + TN}{TP + FP + FN + TN}
+\]
+
+Precision:
+\[
+\text{Precision} = \frac{TP}{TP + FP}
+\]
+
+Recall:
+\[
+\text{Recall} = \frac{TP}{TP + FN}
+\]
+
+F1 Score:
+\[
+\text{F1 Score} = 2 \times \frac{\text{Precision} \times \text{Recall}}{\text{Precision} + \text{Recall}}
+\]
+
+\vspace{\baselineskip}
+
+\subsubsection{Bayes decision theory Matrix}
+\begin{table}[ht]
+  \large
+  \centering
+\begin{tabular}{|l|l|}
+  \hline
+  191 & 193\\
+  \hline
+  169 & 866\\
+  \hline
+\end{tabular}
+\end{table}
+\begin{itemize}
+  \item \textbf{Classifier accuracy:} 75.02\%
+  \item \textbf{Precision for remain:} 83\%
+  \item \textbf{Precision for chrun:} 53\%
+  \item \textbf{Recall for remain:} 84\%
+  \item \textbf{Recall for churn:} 51\%
+  \item \textbf{F1 for remain:} 83\%
+  \item \textbf{F1 for churn:} 52\%
+\end{itemize}
+
+\newpage
+
+\subsubsection{K-Nearest Neighbors Matrix}
+\begin{table}[ht]
+  \large
+  \centering
+\begin{tabular}{|l|l|}
+  \hline
+  141 & 233\\
+  \hline
+  77 & 958\\
+  \hline
+\end{tabular}
+\end{table}
+\begin{itemize}
+  \item \textbf{Classifier accuracy:} 78\%
+  \item \textbf{Precision for remain:} 80\%
+  \item \textbf{Precision for chrun:} 65\%
+  \item \textbf{Recall for remain:} 93\%
+  \item \textbf{Recall for churn:} 38\%
+  \item \textbf{F1 for remain:} 86\%
+  \item \textbf{F1 for churn:} 48\%
+\end{itemize}
+
+\vspace{\baselineskip}
+
+\subsubsection{SVM with Linear kernel Matrix}
+\begin{table}[ht]
+  \large
+  \centering
+\begin{tabular}{|l|l|}
+  \hline
+  157 & 217\\
+  \hline
+  108 & 927\\
+  \hline
+\end{tabular}
+\end{table}
+\begin{itemize}
+  \item \textbf{Classifier accuracy:} 76\%
+  \item \textbf{Precision for remain:} 81\%
+  \item \textbf{Precision for chrun:} 59\%
+  \item \textbf{Recall for remain:} 90\%
+  \item \textbf{Recall for churn:} 42\%
+  \item \textbf{F1 for remain:} 85\%
+  \item \textbf{F1 for churn:} 49\%
+\end{itemize}
+
+\newpage
+
+\subsubsection{SVM with RBF kernel Matrix}
+\begin{table}[ht]
+  \large
+  \centering
+\begin{tabular}{|l|l|}
+  \hline
+  239 & 135\\
+  \hline
+  296 & 739\\
+  \hline
+\end{tabular}
+\end{table}
+\begin{itemize}
+  \item \textbf{Classifier accuracy:} 69.41\%
+  \item \textbf{Precision for remain:} 85\%
+  \item \textbf{Precision for chrun:} 45\%
+  \item \textbf{Recall for remain:} 71\%
+  \item \textbf{Recall for churn:} 64\%
+  \item \textbf{F1 for remain:} 77\%
+  \item \textbf{F1 for churn:} 53\%
+\end{itemize}
+
+\vspace{\baselineskip}
+
+\subsubsection{SVM with Sigmoid kernel Matrix}
+\begin{table}[ht]
+  \large
+  \centering
+\begin{tabular}{|l|l|}
+  \hline
+  150 & 224\\
+  \hline
+  227 & 808\\
+  \hline
+\end{tabular}
+\end{table}
+\begin{itemize}
+  \item \textbf{Classifier accuracy:} 67.99\%
+  \item \textbf{Precision for remain:} 78\%
+  \item \textbf{Precision for chrun:} 40\%
+  \item \textbf{Recall for remain:} 78\%
+  \item \textbf{Recall for churn:} 40\%
+  \item \textbf{F1 for remain:} 78\%
+  \item \textbf{F1 for churn:} 40\%
+\end{itemize}
+
+\newpage
+
+
+
+\section{Conclusions}
+This is obvious that the highest accuracy is related to KNN method, but we know the most important factor for these kinds of project is detecting users who want to leave the service, and we should recognize them, these kinds of users are showing by True Positive (TP) so with another glance we can find an approach to calculate and find the best method. We can calculate average of churn evaluations and find the best, so the best approach in descending order are:
+\begin{itemize}
+  \item \textbf{SVM (RBF):} 54\%
+  \item \textbf{Bayes:} 52\%
+  \item \textbf{KNN:} 50.33\%
+  \item \textbf{SVM (Linear):} 50\%
+  \item \textbf{SVM (Sigmoid):} 40\%
+\end{itemize}
+So we can say SVM with RBF kernel has the most correctness prediction about the churn users despite all the results being so closed, but SVM with Sigmoid kernel has the worst result with a significant gap in comparison with others.\\
+And another important factor is preference, as we have seen all the methods have had really good preformance on our dataset except SVM with Linear kernel that takes some minutes for training the model.
+
+\newpage
+\section{Bibliography or References}
+\vspace{\baselineskip}
+\textbf{The most important references that we have used to implement approaches:}
 \vspace{\baselineskip}
 \newline
-With the first look we can find that the most of the users have joined the company early and less than 5 months and also the other segments are really loyal users.\\
+www.scikit\-learn.org\\
+www.kaggle.com/datasets/blastchar/telco-customer-churn/data\\
+www.medium.com/@bhattbhavesh91/the-mystery-of-n-components-in-pca-a0431ee995be
+\vspace{2cm}
+\newline
+\textbf{Tools that are used for writing this report:}
 \vspace{\baselineskip}
 \newline
-For Monthly Charges we have this part of code:
+www.latex-project.org \\
+www.docs.google.com\\
+www.languagetool.org
 
-\vspace{1cm}
 
-\begin{lstlisting}
-  total_charges_data = df['MonthlyCharges'].astype('int')
-  plt.figure(figsize=(8, 5))
-  plt.hist(total_charges_data, bins=20, color='blue',edgecolor='black')
-  plt.xlabel('Monthly Charges')
-  plt.ylabel('Frequency')
-  plt.title('Histogram of Monthly Charges')
-  plt.grid(True)
-  plt.show()
-  \end{lstlisting}
-  \vspace{\baselineskip}
-  It is obvious that the above code is totally same with the tenure histogram, but we have changed the input data from the dataset to get Monthly Charges. Also in the first line we have changed the data type of the field to int.\\
-  The result of the code is this chart:
-  \begin{figure}[htbp]
-    \centering
-    \includegraphics[width=0.6\textwidth]{assets/hist_monthly_charges.png}
-    \caption{Histogram of Monthly Charges}
-  \end{figure}
-  \vspace{\baselineskip}
-  \newline
-  It is understandable from the above chart that the biggest segment of the users have 20 units of monthly charge.
-  \vspace{\baselineskip}
-  \newline
-  For Total Charges we have exactly the same code with Monthly Charges with different input to Matplotlib. The code is like this:
-  \newpage
-  \begin{lstlisting}
-    total_charges_data = df['TotalCharges'].replace(['', ' '], '0').astype('float').round(2).astype('int')
-    plt.figure(figsize=(8, 5))
-    plt.hist(total_charges_data, bins=20, color='blue',edgecolor='black')
-    plt.xlabel('Total Charges')
-    plt.ylabel('Frequency')
-    plt.title('Histogram of Total Charges')
-    plt.grid(True)
-    plt.show()
-    \end{lstlisting}
-    Like Monthly Charges, we were have to change data type of Total Charges and replace empty columns with zero, and we have got this result: 
-    \begin{figure}[htbp]
-      \centering
-      \includegraphics[width=0.6\textwidth]{assets/hist_total_charges.png}
-      \caption{Histogram of Total Charges}
-    \end{figure}
-    \vspace{\baselineskip}
-    \newline
-    We have understood that most of the users have total charges below 2000 units.
+
 
 \end{document}
